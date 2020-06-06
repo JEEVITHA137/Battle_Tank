@@ -35,7 +35,7 @@ void ATankPlayerController::AimAtCrosshair()
     FVector OutHitLocation;
     if (GetSightRayHitLocation(OutHitLocation))
     {
-        UE_LOG(LogTemp, Warning, TEXT("HitLocation : %s"), *OutHitLocation.ToString());
+        GetControllerTank()->AimAt(OutHitLocation);
     }
 }
 
@@ -70,7 +70,7 @@ bool ATankPlayerController::GetLookVectorHitLocation(FVector LookDirection,FVect
     FHitResult HitResult;
     auto StartingPoint = PlayerCameraManager->GetCameraLocation();
     auto EndPoint = StartingPoint + (LookDirection * LineTraceRange);
-    
+
     if (GetWorld()->LineTraceSingleByChannel(
         HitResult,
         StartingPoint,
