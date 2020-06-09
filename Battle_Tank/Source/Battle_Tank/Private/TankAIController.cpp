@@ -26,6 +26,7 @@ void ATankAIController::Tick(float DeltaTime)
     {
         GetControllerTank()->AimAt(GetPlayerTank()->GetActorLocation());
     }
+    
 }
 
 ATank* ATankAIController::GetControllerTank() const
