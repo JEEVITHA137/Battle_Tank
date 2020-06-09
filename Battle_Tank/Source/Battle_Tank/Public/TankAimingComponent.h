@@ -16,6 +16,10 @@ public:
 	// Sets default values for this component's properties
 	UTankAimingComponent();
 
+	virtual void BeginPlay() override;
+
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
 	void AimAt(FVector OutHitLocation,float LaunchSpeed);
 
 	void SetBarrelReference(UStaticMeshComponent* BarreltoSet);
@@ -23,6 +27,5 @@ public:
 
 private:	
 	UStaticMeshComponent* Barrel = nullptr;
-
-	void MoveBarrelTowards(FVector AimDirection);
+		
 };
