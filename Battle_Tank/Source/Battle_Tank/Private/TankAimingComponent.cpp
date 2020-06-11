@@ -18,6 +18,10 @@ void UTankAimingComponent::SetBarrelReference(UTankBarrel* BarreltoSet)
 {
 	Barrel = BarreltoSet;
 }
+void UTankAimingComponent::SetTurretReference(UStaticMeshComponent *TurrelToSet)
+{
+	Turret = TurrelToSet;
+}
 
 void UTankAimingComponent::AimAt(FVector OutHitLocation,float LaunchSpeed)
 {\
