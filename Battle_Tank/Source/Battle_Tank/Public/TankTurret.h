@@ -9,7 +9,7 @@
 /**
  * 
  */
-UCLASS()
+UCLASS(meta = (BlueprintSpawnableComponent))
 class BATTLE_TANK_API UTankTurret : public UStaticMeshComponent
 {
 	GENERATED_BODY()

@@ -3,3 +3,7 @@
 
 #include "TankTurret.h"
 
+void UTankTurret::Rotate(float RelativeSpeed)
+{
+    UE_LOG(LogTemp,Warning,TEXT("Turret Rotator()-> %f"),RelativeSpeed);
+}
