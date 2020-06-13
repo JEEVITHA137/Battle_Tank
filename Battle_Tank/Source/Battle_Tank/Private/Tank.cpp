@@ -1,9 +1,9 @@
 // Fill out your copyright notice in the Description page of Project Settings.
+#include "Tank.h"
 #include "Engine/World.h"
 #include "TankAimingComponent.h"
 #include "TankBarrel.h"
 #include "Projectile.h"
-#include "Tank.h"
 
 // Sets default values
 ATank::ATank()
@@ -46,19 +46,15 @@ void ATank::SetTurretReference(UTankTurret* TurrelToSet)
 
 void ATank::Firing()
 {
-	auto Time = GetWorld()->GetTimeSeconds();
-	UE_LOG(LogTemp,Warning,TEXT("%f in Firing"),Time);
-
 	if (!Barrel)
 	{
 		return;
 	}
-    
-	GetWorld()->SpawnActor<AProjectile>(
+
+	auto Projectile = GetWorld()->SpawnActor<AProjectile>(
 		ProjectileBlueprint,
 		Barrel->GetSocketLocation(FName("Projectile")),
-		Barrel->GetSocketRotation(FName("Projectile"))
-	);
+		Barrel->GetSocketRotation(FName("Projectile")));
 
-	UE_LOG(LogTemp, Warning, TEXT("hiii"));
+	Projectile->LaunchProjectile(LaunchSpeed);
 }
