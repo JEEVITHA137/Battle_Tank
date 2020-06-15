@@ -7,35 +7,19 @@ class ATank;
 void ATankAIController::BeginPlay()
 {
     Super::BeginPlay();
-    UE_LOG(LogTemp,Warning,TEXT("Player Start Begining"));
-
-    auto GetPlayer = GetPlayerTank();
-    if(!GetPlayer)
-    {
-        UE_LOG(LogTemp, Warning, TEXT("Not Getting Player Tank"));
-    }
-    else
-    {
-        UE_LOG(LogTemp, Warning, TEXT("Player Tank is %s"), *(GetPlayer->GetName()));
-    }
 }
 
 void ATankAIController::Tick(float DeltaTime)
 {
     Super::Tick(DeltaTime);
-    if(GetPlayerTank())
+
+    auto GetControllerTank = Cast<ATank>(GetPawn());
+    auto GetPlayerTank = Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
+    if (GetPlayerTank)
     {
-        GetControllerTank()->AimAt(GetPlayerTank()->GetActorLocation());
+        GetControllerTank->AimAt(GetPlayerTank->GetActorLocation());
+
+        GetControllerTank->Firing();
     }
     
-}
-
-ATank* ATankAIController::GetControllerTank() const
-{
-    return Cast<ATank>(GetPawn());
-}
-
-ATank *ATankAIController::GetPlayerTank() const
-{
-    return Cast<ATank>(GetWorld()->GetFirstPlayerController()->GetPawn());
 }
