@@ -41,15 +41,17 @@ public:
 	UFUNCTION(BlueprintCallable, Category = Setup)
 	void Firing();
 
-	UPROPERTY(EditAnywhere,Category=Firing)
+	UPROPERTY(EditDefaultsOnly,Category=Firing)
 	float LaunchSpeed = 4000;
 
-	UPROPERTY(EditAnywhere, Category = Setup)
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
 	TSubclassOf<AProjectile> ProjectileBlueprint;
+
+	UPROPERTY(EditDefaultsOnly, Category = Setup)
+    float ReloadTimeInSeconds = 3;
 
 	UTankBarrel* Barrel = nullptr;
 
-	float ReloadTimeInSeconds = 3;
 
 	double LastFireTime = 0;
 };
