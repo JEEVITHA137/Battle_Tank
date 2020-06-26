@@ -4,6 +4,14 @@
 #include "TankMovementComponent.h"
 #include "TankTrack.h"
 
+void UTankMovementComponent::RequestDirectMove(const FVector &MoveVelocity, bool bForceMaxSpeed)
+{
+
+    auto TankName = GetOwner()->GetName();
+    auto MoveVelocityString = MoveVelocity.ToString();
+    UE_LOG(LogTemp, Warning, TEXT("%s vectoring to %s"), *TankName, *MoveVelocityString);
+}
+
 void UTankMovementComponent::Initialise(UTankTrack *LeftTrackToSet, UTankTrack *RightTrackToSet)
 {
     if (!LeftTrackToSet || !RightTrackToSet)
@@ -23,7 +31,6 @@ void UTankMovementComponent::IntendMoveForward(float Throw)
 
 void UTankMovementComponent::IntendTurnRight(float Throw)
 {
-    UE_LOG(LogTemp, Warning, TEXT("IntendMoveForward: %f"), Throw);
 
     if (!LeftTrack || !RightTrack )
     LeftTrack->SetThrottle(Throw);
