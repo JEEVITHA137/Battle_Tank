@@ -22,7 +22,7 @@ class BATTLE_TANK_API ATankPlayerController : public APlayerController
 		virtual void Tick(float DeltaTime) override;
 
     private:
-		ATank *GetControllerTank() const;
+
 		void AimAtCrosshair();
 
 		bool GetSightRayHitLocation(FVector& OutHitLocation) const;
@@ -37,4 +37,8 @@ class BATTLE_TANK_API ATankPlayerController : public APlayerController
 
 		UPROPERTY(EditDefaultsOnly)
 		float LineTraceRange = 1000000;
+
+	protected:
+		UFUNCTION(BlueprintCallable, Category = "Setup")
+		ATank *GetControllerTank() const;
 };
