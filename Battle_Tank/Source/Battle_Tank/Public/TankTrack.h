@@ -1,5 +1,5 @@
 
-// Fill out your copyright notice in the Description page of Project Settings.
+//Copyright @2020
 
 #pragma once
 
@@ -17,7 +17,7 @@ class BATTLE_TANK_API UTankTrack : public UStaticMeshComponent
 
 
  public:
-     UFUNCTION(BluePrintCallable,Category = Input)
+     UFUNCTION(BluePrintCallable,Category = "Input")
      void SetThrottle(float Throttle);
 
 	 UPROPERTY(EditDefaultsOnly)

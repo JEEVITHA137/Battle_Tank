@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright @2020
 
 #pragma once
 
@@ -23,18 +23,15 @@ class BATTLE_TANK_API UTankAimingComponent : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:	
-	// Sets default values for this component's properties
-	UTankAimingComponent();
+public:
+	UFUNCTION(BlueprintCallable, Category = "Setup")
+	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
 	void AimAt(FVector OutHitLocation,float LaunchSpeed);
 
-	void SetBarrelReference(UTankBarrel* BarreltoSet);
-
-	void SetTurretReference(UTankTurret* TurrelToSet);
-
-
 private:	
+	UTankAimingComponent();
+
 	UTankBarrel* Barrel = nullptr;
 	UTankTurret* Turret = nullptr;
 
