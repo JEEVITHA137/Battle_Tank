@@ -1,4 +1,4 @@
-// Fill out your copyright notice in the Description page of Project Settings.
+// Copyright @2020
 
 #pragma once
 
@@ -7,9 +7,10 @@
 #include "TankPlayerController.generated.h"
 
 class ATank;
+class UTankAimingComponent;
 
 /**
- * 
+ * Responsible for helping the player aim
  */
 UCLASS()
 class BATTLE_TANK_API ATankPlayerController : public APlayerController
@@ -41,4 +42,7 @@ class BATTLE_TANK_API ATankPlayerController : public APlayerController
 	protected:
 		UFUNCTION(BlueprintCallable, Category = "Setup")
 		ATank* GetControllerTank() const;
+
+		UFUNCTION(BlueprintImplementableEvent, Category = "Setup")
+		void FoundAimingComponent(UTankAimingComponent* AimCompRef);
 };
