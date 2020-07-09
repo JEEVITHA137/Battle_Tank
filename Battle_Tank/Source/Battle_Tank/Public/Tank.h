@@ -30,6 +30,7 @@ protected:
 	UTankMovementComponent* MovementComponent = nullptr;
     
 public:	
+	virtual void BeginPlay() override;
 
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Firing();
