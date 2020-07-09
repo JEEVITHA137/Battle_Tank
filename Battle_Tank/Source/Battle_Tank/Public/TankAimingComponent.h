@@ -7,12 +7,7 @@
 #include "TankAimingComponent.generated.h"
 
 UENUM()
-enum class EFiringState:uint8
-{
-	Locked,
-	Aiming,
-	Reloading
-};
+enum class EFiringState:uint8{Locked,Aiming,Reloading};
 
 //Forward Declarations
 class UTankBarrel;
@@ -39,5 +34,5 @@ private:
 
 protected:
 	UPROPERTY(BlueprintReadOnly,Category="State")
-	EFiringState FiringState = EFiringState::Aiming;
+	EFiringState FiringState = EFiringState::Reloading;
 };
