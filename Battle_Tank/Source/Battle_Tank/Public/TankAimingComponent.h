@@ -56,6 +56,6 @@ private:
 	FVector AimDirection;
 
 protected:
-	UPROPERTY(BlueprintReadOnly,Category="State")
+	UPROPERTY(BlueprintReadOnly,Category="Firing")
 	EFiringState FiringState = EFiringState::Reloading;
 };
