@@ -28,6 +28,8 @@ public:
 
 	void AimAt(FVector OutHitLocation);
 
+	EFiringState GetFiringState() const;
+
 private:	
 	UTankAimingComponent();
 

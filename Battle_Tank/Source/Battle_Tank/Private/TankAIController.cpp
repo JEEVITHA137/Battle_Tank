@@ -1,7 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
-#include "TankAimingComponent.h"
 #include "TankAIController.h"
+#include "TankAimingComponent.h"
 
 // Depends on movement component via pathfinding system
 
@@ -24,5 +24,8 @@ void ATankAIController::Tick(float DeltaTime)
     auto AimingComponent = ControlledTank->FindComponentByClass<UTankAimingComponent>();
     AimingComponent->AimAt(PlayerTank->GetActorLocation());
 
-    AimingComponent->Firing();
+    if(AimingComponent->GetFiringState() == EFiringState::Locked)
+    {
+        AimingComponent->Firing();
+    }
 }
