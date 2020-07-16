@@ -7,7 +7,7 @@
 #include "TankAimingComponent.generated.h"
 
 UENUM()
-enum class EFiringState:uint8{Locked,Aiming,Reloading};
+enum class EFiringState:uint8{Locked,Aiming,Reloading,OutOfAmmo};
 
 //Forward Declarations
 class UTankBarrel;
@@ -23,12 +23,15 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Setup")
 	void Initialise(UTankBarrel* BarrelToSet, UTankTurret* TurretToSet);
 
-	UFUNCTION(BlueprintCallable, Category = "Setup")
+	UFUNCTION(BlueprintCallable, Category = "Firing")
 	void Firing();
 
 	void AimAt(FVector OutHitLocation);
 
 	EFiringState GetFiringState() const;
+
+	UFUNCTION(BlueprintCallable, Category = "Firing")
+	int GetRoundsLeft() const;
 
 private:	
 	UTankAimingComponent();
@@ -60,4 +63,7 @@ private:
 protected:
 	UPROPERTY(BlueprintReadOnly,Category="Firing")
 	EFiringState FiringState = EFiringState::Reloading;
+
+	int RoundsLeft = 3;
+	
 };
