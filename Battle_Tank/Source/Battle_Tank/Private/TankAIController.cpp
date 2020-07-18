@@ -31,7 +31,7 @@ void ATankAIController::Tick(float DeltaTime)
     }
 }
 
-void ATankAIController::SetPawn(APawn *InPawn)
+void ATankAIController::SetPawn(APawn* InPawn)
 {
     Super::SetPawn(InPawn);
     if (InPawn)
@@ -49,4 +49,9 @@ void ATankAIController::SetPawn(APawn *InPawn)
 void ATankAIController::OnPossedTankDeath()
 {
     UE_LOG(LogTemp, Warning, TEXT("Received!"))
+    if (!ensure(GetPawn()))
+    {
+        return;
+    } 
+    GetPawn()->DetachFromControllerPendingDestroy();
 }
