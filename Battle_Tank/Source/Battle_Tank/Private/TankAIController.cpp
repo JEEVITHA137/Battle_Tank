@@ -2,6 +2,7 @@
 
 #include "TankAIController.h"
 #include "TankAimingComponent.h"
+#include "Tank.h"
 
 // Depends on movement component via pathfinding system
 
@@ -28,4 +29,24 @@ void ATankAIController::Tick(float DeltaTime)
     {
         AimingComponent->Firing();
     }
+}
+
+void ATankAIController::SetPawn(APawn *InPawn)
+{
+    Super::SetPawn(InPawn);
+    if (InPawn)
+	{
+        auto PossessedTank = Cast<ATank>(InPawn);
+        if (!ensure(PossessedTank))
+        {
+            return;
+        }
+
+        PossessedTank->OnDeath.AddUniqueDynamic(this, &ATankAIController::OnPossedTankDeath);
+    }
+}
+
+void ATankAIController::OnPossedTankDeath()
+{
+    UE_LOG(LogTemp, Warning, TEXT("Received!"))
 }
