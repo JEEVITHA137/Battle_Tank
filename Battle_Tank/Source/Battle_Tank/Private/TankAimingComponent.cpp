@@ -16,6 +16,7 @@ UTankAimingComponent::UTankAimingComponent()
 
 void UTankAimingComponent::BeginPlay()
 {
+	Super::BeginPlay();
 	LastFireTime = FPlatformTime::Seconds();
 }
 
